@@ -1,12 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- 	<meta charset="UTF-8">
- 	<title>Ciera's Site</title>
+<title>Ciera Unit 9</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Megrim">
 </head>
 <body>
 
-<h1>Hello world! Making edits.</h1>
+
+<div class="top">
+  <div class="row padding black">
+    <div class="col s3">
+      <a href="#" class="button block black">HOME</a>
+    </div>
+    <div class="col s3">
+      <a href="#about" class="button block black">ABOUT</a>
+    </div>
+    <div class="col s3">
+      <a href="#menu" class="button block black">MENU</a>
+    </div>
+    <div class="col s3">
+      <a href="#where" class="button block black">WHERE</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="header">
+  <h1>Monk's Cafe</h1>
+  <p>"The Coffee Shop"</p>
+</div>
+
+
+ <div class="image padding-48">
+<img src="http://circuits-assets.generalassemb.ly/prod/asset/5475/toms-restaurant.jpg" alt="toms-restaurant" class="restaurant" style="display:block;margin:auto" width="567" height="381">
+   </div>
+
+<div class="reservations padding-16">
+  <h2 class="padding-16"><span class="tag wide">RESERVATIONS</span></h2>
+</div>
+
+<div class="row">
+  <div class="column">
+    <h3 class="center padding-16"><span class="tag wide">MAKE A RESERVATION</span></h3>
+    <form>
+      <p><input class="input padding-16 border" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="input padding-16 border" type="number" placeholder="How many people" required name="People"></p>
+      <p><input class="input padding-16 border" type="datetime-local" placeholder="Date and time" required name="date" value="2017-09-26T20:00"></p>
+      <p><input class="input padding-16 border" type="text" placeholder="Phone Number" required name="Phone"></p>
+      <p><button class="button black" type="submit">CONFIRM RESERVATION</button></p>
+    </form>
+  </div>
+
+  <div class="column">
+<h3 class="padding-16"><span class="tag wide">EXISTING RESERVATIONS</span></h3>
+   <table class="table striped border">
+    <tr class= "padding-16 border">
+      <th>Name</th>
+      <th>Day</th>      
+    </tr>
+    <tr class="padding-16 border">
+      <td>Jill</td>
+      <td>2017-09-26 12:00</td>     
+    </tr>
+    <tr class="padding-16 border">
+      <td>Eve</td>
+      <td>2017-09-26 15:00</td>
+    </tr>
+    <tr class="padding-16 border">
+      <td>Adam</td>
+      <td>2017-09-26 18:00</td>
+    </tr>
+  </table>
+  </div>
+
+</div>
+
+
+
+<div class="container" id="where" style="padding-bottom:32px;">
+  <div class="content" style="max-width:700px">
+    <h1 class="center padding-16"><span class="tag wide">COME DINE WITH US</span></h1>
+    <div id="googleMap" class="sepia" style="width:100%;height:400px;"></div>
+
+
+<div class="reviews padding-16">
+  <h4 class="padding-16"><span class="tag wide">CUSTOMER REVIEWS</span></h4>
+</div>
+
+<div class="row">
+  <div class="column">
+<img src="http://circuits-assets.generalassemb.ly/prod/asset/5474/jerry.jpg" alt="jerry" class="review" style="float:left;width:100%;height:auto;" >
+  </div>
+
+  <div class="column">
+   <p> “Big lettuce, big carrots, tomatoes like volleyballs.” <br><br>
+       — Jerry Seinfeld, on The BIG Salad </p>
+  </div>
+
+</div>
+
+<script>
+
+function myMap()
+{
+  myCenter=new google.maps.LatLng(40.8054491, -73.9654415);
+  var mapOptions= {
+    center:myCenter,
+    zoom:12, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+
+
+document.getElementById("myLink").click();
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC52OA1zk0BSfulhQH3ppOws3lmN8_EA
+U&callback=myMap">
+  
+</script>
+
 
 </body>
 </html>
