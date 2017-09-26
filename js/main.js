@@ -24,30 +24,41 @@
    });
 
   // Step 4: Update the 'name' property when the form is submitted
-  $('.reservation').on('submit', function(e){
-  	// don't reload the page
-  	e.preventDefault();
+   $('.reservations').on('submit', function(e){
+    // don't reload the page
+    e.preventDefault();
 
-  	reservationData.name = $('.reservation-name').val();
+    reservationData.name = $('.reservation-name').val();
 
 
   // Step 5: Post reservation info to firebase
 
-  	database.ref('reservation').push(reservationData);
-
+  	database.ref('reservations').push(reservationData);
   });
 
   // Step 6: Update the reservation view using Handlebars. Create function getReservations
-
-function getReservations(){
-	database.ref('reservation').on('child_added',function(list){
-		var reservations = list.val();
-		var source = $('#reservation-template').html();
-		var template = Handlebars.compile(source);
-		var reservationTemplate = template(reservations);
-		$(reservation-list).append(reservationTemplate);
-	});
-}
+function getReservations() {
+    database.ref('reservations').on('value', function(results) {
+      var allReservations = results.val();
+      var reservations = [];
+      for (var item in allReservations){
+        var context = {
+          name: allReservations[item].name,
+          day: allReservations[item].day,
+          commentId: item
+        };
+        var source = $('#reservation-template').html();
+        var template = Handlebars.compile(source);
+        var reservationData = template(context);
+        reservations.push(reservationData)
+      }
+      $('.reservation-list').empty();
+      for (var i in reservations){
+        $('.reservation-list').append(reservations[i])
+      }
+            });
+  }
+       
 getReservations();
 
   // Step 7: Define the Google Maps API callback Bonus: add styling
